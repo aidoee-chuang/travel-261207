@@ -193,7 +193,7 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 13px;
             margin-top: 20px
         }
@@ -276,6 +276,12 @@
             background: #e5ece6;
             padding: 5px;
             border-radius: 14px
+        }
+
+        .day-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px
         }
 
         .day-toggle button {
@@ -382,6 +388,64 @@
         .step-card p {
             color: #63776e;
             margin: 3px 0 12px;
+            font-size: .9rem
+        }
+
+        .step-card .step-address {
+            margin: 0 0 3px;
+            color: #697d74;
+            font-size: .82rem
+        }
+
+        .stay-info {
+            margin: 14px 0 20px;
+            border: 1px solid #d9e5dd;
+            border-radius: 15px;
+            background: #f5f8f5
+        }
+
+        .stay-info summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 18px 20px;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--ink);
+            list-style: none
+        }
+
+        .stay-info summary::-webkit-details-marker { display: none }
+
+        .stay-info summary::after {
+            content: '＋';
+            color: var(--green);
+            font-size: 1.35rem;
+            line-height: 1
+        }
+
+        .stay-info[open] summary::after { content: '－' }
+
+        .stay-info .stay-content {
+            padding: 0 20px 18px
+        }
+
+        .stay-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.05rem
+        }
+
+        .stay-info p {
+            margin: 5px 0;
+            color: #63776e;
+            font-size: .9rem
+        }
+
+        .stay-info ul {
+            margin: 5px 0 0;
+            padding-left: 1.25em;
+            color: #63776e;
             font-size: .9rem
         }
 
@@ -1249,92 +1313,50 @@
         <div class="inner">
             <div class="eyebrow">FAMILY JOURNEY · MIAOLI 2026</div>
             <h1>山裡<span>相聚</span><br>慢慢走，慢慢聊</h1>
-            <p class="lead">雪霸生態 × 薑麻客家味 × 泰安山谷 × 竹林光影<br>一趟為家人而安排的兩天一夜山林旅行。</p>
-            <div class="hero-pills"><span>2026.12.07 — 12.08</span><span>11
-                    位親友同行</span><span>兩天一夜</span><span>北投・基隆・桃園集合</span><span>更新日期：2026.11.12</span></div>
+            <p class="lead">石風城堡午餐 × 泰安山谷溫泉 × 烏嘎彥竹林 × 本柿料理<br>一趟為家人而安排的兩天一夜山林旅行。</p>
+                <div class="hero-pills"><span>2026.12.07 — 12.08</span><span>更新日期：2026.11.15 19:14</span></div>
         </div>
     </header>
     <nav class="sticky">
-        <div class="nav"><a href="#overview">旅程概要</a><a href="#schedule">每日行程</a><a href="#spots">景點故事</a><a
+        <div class="nav"><a href="#overview">旅程概要</a><a href="#schedule">每日行程</a><a
                 href="#route">導航地圖</a></div>
     </nav>
     <main class="container">
-        <section id="overview" class="section intro">
-            <h2>這次旅程，重要的是一起相聚。</h2>
-            <p>三地親友從北投、基隆、桃園各自出發，在汶水遊客中心會合。第一天走進雪霸生態與客家農村，夜宿泰安觀止；第二天欣賞竹林光影，在石風城堡共進午餐後返回苗栗高鐵站。</p>
-            <div class="stats">
-                <div class="stat"><small>出遊日期</small><strong>12/7–12/8</strong><small>週一至週二</small></div>
-                <div class="stat"><small>同行人數</small><strong>11 人</strong><small>多車自駕</small></div>
-                <div class="stat"><small>第一集合點</small><strong>10:00</strong><small>汶水遊客中心</small></div>
-                <div class="stat"><small>最後解散</small><strong>15:15–15:45</strong><small>苗栗高鐵站</small></div>
-            </div>
-            <div class="toolbar"><a class="action primary" href="#schedule">查看每日行程 ↓</a><a class="action"
-                    href="#route">開啟導航</a><button class="action" onclick="window.print()">列印／存成 PDF</button></div>
-        </section>
         <section id="schedule" class="section">
             <div class="day-head">
                 <div>
-                    <h2>每日時間軸</h2>
-                    <p class="subtitle">可切換第一天與第二天，點每個景點的「導航」立即開啟地圖。</p>
+                    <h2>行程</h2>
                 </div>
-                <div class="day-toggle" role="tablist"><button id="tab0" role="tab" aria-selected="true"
+                <div class="day-actions"><div class="day-toggle" role="tablist"><button id="tab0" role="tab" aria-selected="true"
                         onclick="switchDay(0)">12/7 星期一</button><button id="tab1" role="tab" aria-selected="false"
-                        onclick="switchDay(1)">12/8 星期二</button></div>
+                        onclick="switchDay(1)">12/8 星期二</button></div><a class="action"
+                        href="苗栗泰安兩天一夜每日時間軸.docx" download>下載行程</a></div>
             </div>
             <div id="days"></div>
         </section>
-        <section id="spots" class="section">
-            <h2>景點故事與造訪指南</h2>
-            <p class="subtitle">不只是景點名稱，更是每一站可以一起體驗、分享的主題。</p>
-            <div id="places" class="placegrid"></div>
-        </section>
         <section id="route" class="section">
             <h2>地圖與行車導航</h2>
-            <p class="subtitle">導航按鈕會開啟 Google Maps；山區路線請以導航當日狀況為主，避免只依預估時間上路。</p>
             <div class="map-shell" id="interactive-place-map">
                 <div class="map-chooser" role="group" aria-label="地圖顯示範圍">
-                    <button type="button" aria-pressed="true" data-map-mode="all">全部 6 站</button>
+                    <button type="button" aria-pressed="true" data-map-mode="all">全部 4 站</button>
                     <button type="button" aria-pressed="false" data-map-mode="day1">12/7 第一日</button>
                     <button type="button" aria-pressed="false" data-map-mode="day2">12/8 第二日</button>
                     <button type="button" aria-pressed="false" data-map-mode="single">單點查看</button>
                 </div>
                 <div class="map-chooser single-chooser" id="single-map-chooser" role="group" aria-label="選擇個別景點" hidden>
-                    <button type="button" aria-pressed="true" data-map-place="wenshui">汶水遊客中心</button>
-                    <button type="button" aria-pressed="false" data-map-place="farm">雲也居一</button>
+                    <button type="button" aria-pressed="true" data-map-place="stone">石風城堡</button>
                     <button type="button" aria-pressed="false" data-map-place="hotel">泰安觀止</button>
                     <button type="button" aria-pressed="false" data-map-place="bamboo">烏嘎彥竹林</button>
-                    <button type="button" aria-pressed="false" data-map-place="stone">石風城堡</button>
-                    <button type="button" aria-pressed="false" data-map-place="hsr">苗栗高鐵站</button>
+                    <button type="button" aria-pressed="false" data-map-place="persimmon">本柿餐廳</button>
                 </div>
-                <iframe class="map-frame" id="place-map-frame" title="全部六個景點 Google 地圖" loading="lazy"
+                <iframe class="map-frame" id="place-map-frame" title="全部四個景點 Google 地圖" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
-                <div class="map-info">
-                    <div><strong id="map-place-name">全部 6 站｜兩天路線</strong><span
+                <div class="map-info" hidden>
+                    <div><strong id="map-place-name">全部 4 站｜兩天路線</strong><span
                             id="map-place-address">依旅遊順序同時標示景點，切換每日可查看分日路線。</span></div><a class="action primary"
                         id="map-open-link" target="_blank" rel="noopener" href="#route">在 Google Maps 查看全路線 ↗</a>
                 </div>
                 <div class="map-pins" id="map-pins" aria-label="行程景點標記清單"></div>
-            </div>
-            <p class="subtitle" style="margin:0 0 12px">預設同時顯示六站的 Google Maps 路線與標記；如內嵌地圖受瀏覽器限制，請按「在 Google Maps
-                查看全路線」。下方的編號景點亦可單獨導航。地圖需網路連線。</p>
-            <div class="box">
-                <h3>第一天｜12/7</h3>
-                <div class="route">
-                    <div class="stop">汶水遊客中心<small>10:00 集合</small></div>
-                    <div class="stop">雲也居一<small>12:15 午餐</small></div>
-                    <div class="stop">泰安觀止<small>16:15 入住</small></div>
-                </div>
-                <p><a id="route0" class="action primary" target="_blank" rel="noopener">導航第一天行車路線 ↗</a></p>
-                <h3 style="margin-top:26px">第二天｜12/8</h3>
-                <div class="route">
-                    <div class="stop">泰安觀止<small>10:00 出發</small></div>
-                    <div class="stop">烏嘎彥竹林<small>10:45 短訪</small></div>
-                    <div class="stop">石風城堡<small>12:15 午餐</small></div>
-                    <div class="stop">苗栗高鐵站<small>15:15 左右</small></div>
-                </div>
-                <p><a id="route1" class="action primary" target="_blank" rel="noopener">導航第二天行車路線 ↗</a></p>
-                <p style="color:var(--muted);font-size:.87rem">
-                    手機導航可能依裝置、道路管制或使用者位置重新選線。實際集合點是汶水遊客中心。</p>
             </div>
         </section>
 
@@ -1342,17 +1364,40 @@
     <footer class="footer">山裡相聚 · Miaoli Family Journey 2026<br>願這兩天，有更多一起坐下來聊天的時光。</footer>
     <script>
         const PLACES = [{ "id": "wenshui", "title": "汶水遊客中心", "type": "自然生態・集合地點", "address": "苗栗縣大湖鄉富興村水尾坪98號", "phone": "037-996100", "site": "https://www.taiwan.nps.gov.tw/home/zh-tw/attractions/21171.html", "blurb": "從雪霸的地形、森林與野生動物出發，開啟兩天的山林旅程。四合院式展示館、廣闊草坪、生態湖畔適合家庭一起慢慢認識環境。", "highlights": ["雪霸高山生態展示", "湖畔短程散步", "集合與洗手間"], "warning": "週一例行影片暫停。展示廳導覽需電話洽詢；公開導覽資訊另有 20 人門檻，11 人是否受理須確認。" }, { "id": "farm", "title": "雲也居一休閒農場", "type": "客家飲食・食農體驗", "address": "苗栗縣大湖鄉栗林村薑麻園6號", "phone": "037-951530", "site": "https://milehigh.com.tw/experience/", "blurb": "在薑麻園山區，透過客家薑香料理與友善耕作故事，理解農村如何把土地、季節與家人圍桌的味道串在一起。", "highlights": ["在地薑麻特色料理", "60 分鐘短版體驗", "山景與農業文化"], "warning": "官方大灶農村廚房是較長時段活動，10 人以上可預約；14:00–15:00 短版需另行洽談。孕婦餐點請避開酒類料理。" }, { "id": "hotel", "title": "泰安觀止溫泉會館", "type": "山林住宿・家庭團聚", "address": "苗栗縣泰安鄉錦水村圓墩58號", "phone": "037-941777", "site": "https://www.papawaqa.com.tw/", "blurb": "坐落在泰安山谷中的設計型會館。這一晚把節奏慢下來，留更多時間給家人聊天、晚餐與自然景觀。", "highlights": ["已選定住宿", "山景與溪畔氣氛", "家庭晚餐與自由休息"], "warning": "晚餐時段、房間分配及實際入住／退房規則需依訂房資料確認。孕婦不安排高溫泡湯及三溫暖。" }, { "id": "bamboo", "title": "烏嘎彥竹林", "type": "綠色竹林・山路短訪", "address": "苗栗縣泰安鄉大興村烏嘎彥竹林", "phone": "037-941025", "site": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376450000a_000949", "blurb": "翠綠竹林形成天然的光影隧道。適合停留半小時，在安全的可達範圍欣賞山林寂靜，不必延伸登山。", "highlights": ["竹林綠蔭", "短距離欣賞", "上午自然光"], "warning": "進出產業道路狹窄且蜿蜒，雨霧、落石或孕婦疲憊時直接取消；停車、地面坡度與收費待確認。" }, { "id": "stone", "title": "石風城堡庭園景觀餐廳", "type": "庭園料理・團體午餐", "address": "苗栗縣大湖鄉富興村6鄰水尾5-10號", "phone": "037-993366", "site": "https://romantichakka.hakka.gov.tw/explore/HaFood?a=1955&id=3373", "blurb": "以日式庭園氛圍搭配創意料理，作為兩天旅程的壓軸共餐；用餐後留一段自在散步、喝茶與合照的時間。", "highlights": ["12:15 午餐目標", "11 人團體聚餐", "庭園休憩"], "warning": "公告週二 11:30–21:00，但 12/8 的 11 人座位、套餐及價格尚未訂位確認。" }, { "id": "hsr", "title": "苗栗高鐵站", "type": "返程會合・解散", "address": "苗栗縣後龍鎮高鐵三路268號", "phone": "", "site": "https://www.thsrc.com.tw/", "blurb": "兩天旅程的最後會合點，確認全員、行李與車輛後各自安全返程。", "highlights": ["返程集合", "高鐵接送", "車輛清點"], "warning": "山區路況可能使抵達時間延後；不建議訂太緊迫的高鐵班次。" }]; const DAYS = [{ "date": "12/7", "weekday": "星期一", "subtitle": "從雪霸走進客家農村", "items": [["10:00–10:30", "汶水遊客中心集合", "北投、基隆、桃園車輛陸續抵達；洗手間、分組與團體合照。", "wenshui", "集合"], ["10:30–11:30", "雪霸自然生態展示與解說", "展示廳參觀；專人解說尚未確認，10:30 不是公告的預約起始時段。", "wenshui", "待確認"], ["11:30–12:15", "前往雲也居一休閒農場", "沿台 3 線轉入薑麻園山路，車程為行程預留時間。", "farm", "移動"], ["12:15–13:45", "客家特色午餐", "11 人圍桌共餐；詢問孕婦可食用的無酒料理與座位安排。", "farm", "待訂位"], ["14:00–15:00", "農村導覽或食農體驗", "安排 60 分鐘室內手作；農場客製確認中。", "farm", "待預約"], ["15:00–16:15", "前往泰安觀止", "山區駕駛請控制車距，途中依需要停靠休息。", "hotel", "移動"], ["16:15–18:00", "入住與自由休息", "分房、欣賞山景、休息；孕婦不安排高溫泡湯。", "hotel", "住宿"], ["18:00–19:30", "家庭晚餐", "優先確認飯店晚餐或既有住宿方案內的餐食安排。", "hotel", "待確認"]] }, { "date": "12/8", "weekday": "星期二", "subtitle": "竹林光影・城堡午餐・溫馨返程", "items": [["08:00–09:30", "泰安觀止早餐", "享受悠閒早晨；確認今日山區天氣與路況。", "hotel", "用餐"], ["09:30–10:00", "整理行李、退房", "行李確認、車輛分組、洗手間。", "hotel", "住宿"], ["10:00–10:45", "前往烏嘎彥竹林", "山路狹窄且有坡度，路況不佳時啟動取消方案。", "bamboo", "移動"], ["10:45–11:15", "竹林景觀散步、拍照", "短段參觀，不以健行為目標；孕婦可選擇不下車。", "bamboo", "戶外"], ["11:15–12:15", "前往石風城堡餐廳", "依實際山路車速調整，12:15 為午餐目標時間。", "stone", "移動"], ["12:15–13:45", "石風城堡庭園午餐", "11 人座位及餐點尚須餐廳確認。", "stone", "待訂位"], ["13:45–14:15", "庭園散步、下午茶或休息", "自由合照與休息，注意坡道與濕滑路面。", "stone", "自由"], ["14:15–15:15", "前往苗栗高鐵站或解散", "暫估交通時段；需依出發當日導航調整。", "hsr", "移動"], ["15:15–15:45", "苗栗高鐵站集合、解散", "清點人員及行李，三地車輛平安返程。", "hsr", "集合"]] }];
+        PLACES.splice(0, PLACES.length,
+            { id: 'stone', title: '苗栗大湖石風城堡庭園景觀餐廳', type: '庭園料理・第一天午餐', address: '苗栗縣大湖鄉水尾5之10號', phone: '037-993366', site: 'https://romantichakka.hakka.gov.tw/explore/HaFood?a=1955&id=3373', blurb: '第一天的團體午餐地點；在庭園景觀中用餐後，接續前往泰安觀止。', highlights: ['12:30 午餐', '日式景觀餐廳', '庭園休憩'], warning: '座位、套餐及價格請事先向餐廳確認。' },
+            { id: 'hotel', title: '泰安觀止溫泉會館', type: '山林住宿・溫泉休憩', address: '苗栗縣泰安鄉錦水村圓墩58號', phone: '037-941777', site: 'https://www.papawaqa.com.tw/', blurb: '抵達後可使用戶外泡湯設施，並安排下午茶、晚餐與住宿休息。', highlights: ['14:00 起開放戶外泡湯區', '請自備泳帽與泳衣', '下午茶與 18:00 晚餐'], warning: '泳裝區須著泳帽、泳衣；請依飯店當日規定使用設施。' },
+            { id: 'bamboo', title: '烏嘎彥竹林', type: '綠色竹林・山路短訪', address: '苗栗縣泰安鄉大興村烏嘎彥竹林', phone: '037-941025', site: 'https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376450000a_000949', blurb: '翠綠竹林形成天然的光影隧道，適合安排短暫散步與拍照。', highlights: ['竹林綠蔭', '短距離欣賞', '上午自然光'], warning: '產業道路狹窄蜿蜒，請依天候與路況調整行程。' },
+            { id: 'persimmon', title: '本柿餐廳', type: '在地料理・第二天午餐', address: '苗栗縣公館鄉館東村 10 鄰 143-10 號', phone: '', site: '', blurb: '第二天造訪烏嘎彥竹林後，前往公館享用午餐。', highlights: ['第二天午餐', '公館在地料理', '團體座位待確認'], warning: '請事先確認 11 人座位、餐點與營業時間。' },
+            { id: 'hsr', title: '苗栗高鐵站', type: '返程會合・解散', address: '苗栗縣後龍鎮高鐵三路268號', phone: '', site: 'https://www.thsrc.com.tw/', blurb: '旅程的最後會合點，確認全員、行李與車輛後各自安全返程。', highlights: ['返程集合', '高鐵接送', '車輛清點'], warning: '請依當日導航與路況保留充裕交通時間。' }
+        );
+        DAYS.splice(0, DAYS.length,
+            { date: '12/7', weekday: '星期一', subtitle: '', items: [
+                ['12:30–14:00', '午餐 風城堡創意料理餐廳', '石風城堡創意料理餐廳位於石風溫泉渡假城堡園區內，結合和風木造建築、庭園景觀與和洋創意料理。', 'stone', '用餐', '苗栗縣大湖鄉水尾5之10號'],
+                ['14:00–14:30', '前往泰安觀止溫泉會館', '坐落在苗栗泰安的汶水溪畔的溫泉旅館。住一晚，可以從下午的溪谷光影一路看到隔天清晨的山景。', 'hotel', '移動', '苗栗縣泰安鄉錦水村圓墩58號'],
+                ['14:30–18:00', '泡湯、下午茶', '泡湯需自備泳帽、泳衣；飯店提供拖鞋、大毛巾與沐浴用品。<br>露天風呂：14:00–22:00<br>下午茶：14:00–16:30', 'hotel', '泡湯'],
+                ['18:00–19:30', '晚餐', '', 'hotel', '用餐']
+            ] },
+            { date: '12/8', weekday: '星期二', subtitle: '', items: [
+                ['07:30–09:00', '早餐', '', 'hotel', '用餐'],
+                ['09:00–10:00', '退房', '', 'hotel', '住宿'],
+                ['10:00–10:30', '前往烏嘎彥竹林', '位在苗栗縣泰安鄉大興村。小徑兩旁的竹子向上交疊，形成一段約 100 公尺的天然隧道。晴天時，陽光從竹葉縫隙灑進來，走在裡面就能看到深淺不同的綠色。', 'bamboo', '移動', '苗栗縣泰安鄉大興村烏嘎彥竹林'],
+                ['10:30–11:30', '烏嘎彥竹林散步', '', 'bamboo', '戶外'],
+                ['11:30–12:00', '前往本柿餐廳', '藏在苗栗公館的田野間，前院就是一片柿子園。老闆出身在地「柿之鄉」柿餅加工家族，把自家的柿餅、公館的紅棗和福菜融入料理。', 'persimmon', '移動', '苗栗縣公館鄉館東村 10 鄰 143-10 號'],
+                ['12:00–13:30', '午餐 本柿餐廳', '', 'persimmon', '用餐']
+            ] }
+        );
         const place = id => PLACES.find(p => p.id === id), nav = id => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(place(id).title + ' ' + place(id).address);
         const route = (ids) => 'https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=' + encodeURIComponent(place(ids[0]).address) + '&destination=' + encodeURIComponent(place(ids.at(-1)).address) + '&waypoints=' + encodeURIComponent(ids.slice(1, -1).map(id => place(id).address).join('|'));
         const mapFrame = document.getElementById('place-map-frame');
-        const MAP_ORDER = ['wenshui', 'farm', 'hotel', 'bamboo', 'stone', 'hsr'];
-        const MAP_GROUPS = { all: MAP_ORDER, day1: ['wenshui', 'farm', 'hotel'], day2: ['hotel', 'bamboo', 'stone', 'hsr'] };
-        const mapModes = { all: ['全部 6 站｜兩天路線', '汶水 → 雲也居一 → 泰安觀止 → 烏嘎彥竹林 → 石風城堡 → 苗栗高鐵站'], day1: ['第一天｜12/7', '汶水遊客中心 → 雲也居一 → 泰安觀止'], day2: ['第二天｜12/8', '泰安觀止 → 烏嘎彥竹林 → 石風城堡 → 苗栗高鐵站'] };
-        let currentMode = 'all', currentPlace = 'wenshui';
+        const MAP_ORDER = ['stone', 'hotel', 'bamboo', 'persimmon'];
+        const MAP_GROUPS = { all: MAP_ORDER, day1: ['stone', 'hotel'], day2: ['hotel', 'bamboo', 'persimmon'] };
+        const mapModes = { all: ['全部 4 站｜兩天路線', '石風城堡 → 泰安觀止 → 烏嘎彥竹林 → 本柿餐廳'], day1: ['第一天｜12/7', '石風城堡 → 泰安觀止'], day2: ['第二天｜12/8', '泰安觀止 → 烏嘎彥竹林 → 本柿餐廳'] };
+        let currentMode = 'all', currentPlace = 'stone';
         // 使用 Google Maps 多站路線嵌入，讓所有選定站點一起出現在同一張地圖。
         function mapDirectionsEmbed(ids) { const ps = ids.map(place); return 'https://maps.google.com/maps?saddr=' + encodeURIComponent(ps[0].title + ' ' + ps[0].address) + '&daddr=' + ps.slice(1).map(p => encodeURIComponent(p.title + ' ' + p.address)).join('+to:') + '&output=embed'; }
         function mapDirectionsOpen(ids) { return route(ids); }
-        function updatePins(ids) { document.getElementById('map-pins').innerHTML = ids.map(id => { const i = MAP_ORDER.indexOf(id), p = place(id); return `<a class="pin-item ${i >= 3 ? 'day2' : ''}" href="${nav(id)}" target="_blank" rel="noopener" title="查看 ${p.title} 的地圖"><span class="pin-number">${i + 1}</span><span class="pin-name">${p.title}<span class="pin-day">${i < 3 ? '12/7' : '12/8'} · 查看地點 ↗</span></span></a>` }).join(''); }
+        function updatePins(ids) { document.getElementById('map-pins').innerHTML = ids.map((id, order) => { const p = place(id), isDay2 = currentMode === 'day2' || (currentMode === 'all' && ['bamboo', 'persimmon'].includes(id)) || (currentMode === 'all' && id === 'hsr' && order === ids.length - 1); const day = id === 'hsr' && currentMode === 'all' ? (order === 0 ? '12/7 集合' : '12/8 解散') : (isDay2 ? '12/8' : '12/7'); return `<a class="pin-item ${isDay2 ? 'day2' : ''}" href="${nav(id)}" target="_blank" rel="noopener" title="查看 ${p.title} 的地圖"><span class="pin-number">${order + 1}</span><span class="pin-name">${p.title}<span class="pin-day">${day} · 查看地點 ↗</span></span></a>` }).join(''); }
         function setMapMode(mode) {
             if (mode !== 'single' && !MAP_GROUPS[mode]) return; currentMode = mode;
             document.querySelectorAll('[data-map-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mapMode === mode)));
@@ -1377,11 +1422,12 @@
         document.querySelectorAll('[data-map-mode]').forEach(b => b.addEventListener('click', () => setMapMode(b.dataset.mapMode)));
         document.querySelectorAll('[data-map-place]').forEach(b => b.addEventListener('click', () => setMapPlace(b.dataset.mapPlace)));
         setMapMode('all');
-        document.querySelector('#route0').href = route(['wenshui', 'farm', 'hotel']); document.querySelector('#route1').href = route(['hotel', 'bamboo', 'stone', 'hsr']);
         const tagClass = t => t.includes('待') ? 'tag pending' : 'tag';
-        document.querySelector('#days').innerHTML = DAYS.map((d, i) => `<div class="day-panel ${i === 0 ? 'active' : ''}" id="day${i}" role="tabpanel" aria-labelledby="tab${i}"><div class="day-overview"><b>DAY ${i + 1}｜${d.date} ${d.weekday}</b><p>${d.subtitle}</p></div><div class="timeline">${d.items.map(it => `<div class="step"><div class="time">${it[0].replace('–', '<br>–')}</div><div class="dot"></div><div class="step-card"><div class="row"><h3>${it[1]}</h3><span class="${tagClass(it[4])}">${it[4]}</span></div><p>${it[2]}</p><a class="mini-link" target="_blank" rel="noopener" href="${nav(it[3])}">地圖導航 ↗</a></div></div>`).join('')}</div></div>`).join('');
+        DAYS[0].items = DAYS[0].items.filter(item => item[1] !== '汶水遊客中心集合');
+        const HIDE_TIMELINE_NAVIGATION = new Set(['泡湯、下午茶', '晚餐', '早餐', '退房', '烏嘎彥竹林散步', '午餐 本柿餐廳']);
+        const STAY_INFO = `<details class="stay-info"><summary>泰安觀止住宿資訊</summary><div class="stay-content"><p><strong>戶外泡湯區</strong></p><p>早場：07:00–12:00，最後入場 11:00；午場：14:00–22:00，最後入場 21:00。</p><p>泳裝區包含戶外冷水池、溫泉池與蒸氣室，需著泳帽、泳衣。</p><p>裸湯區包含男、女裸湯露天池區、蒸氣室與烤箱。</p><p>房客不限入場次數。</p><p><strong>房型</strong></p><ul><li>觀水日式兩人房（一大床）× 3</li><li>觀水歐式兩人房（兩小床）× 1</li><li>觀山四人房（兩大床）× 1</li></ul></div></details>`;
+        document.querySelector('#days').innerHTML = DAYS.map((d, i) => `<div class="day-panel ${i === 0 ? 'active' : ''}" id="day${i}" role="tabpanel" aria-labelledby="tab${i}"><div class="day-overview"><b>DAY ${i + 1}｜${d.date} ${d.weekday}</b>${d.subtitle ? `<p>${d.subtitle}</p>` : ''}</div>${i === 0 ? STAY_INFO : ''}<div class="timeline">${d.items.map(it => `<div class="step"><div class="time">${it[0].replace('–', '<br>–')}</div><div class="dot"></div><div class="step-card"><div class="row"><h3>${it[1]}</h3><span class="${tagClass(it[4])}">${it[4]}</span></div>${it[5] ? `<p class="step-address">地址：${it[5]}</p>` : ''}${it[2] ? `<p>${it[2]}</p>` : ''}${HIDE_TIMELINE_NAVIGATION.has(it[1]) ? '' : `<a class="mini-link" target="_blank" rel="noopener" href="${nav(it[3])}">地圖導航 ↗</a>`}</div></div>`).join('')}</div></div>`).join('');
         function switchDay(i) { document.querySelectorAll('.day-panel').forEach((p, j) => p.classList.toggle('active', i === j)); document.querySelectorAll('[role=tab]').forEach((p, j) => p.setAttribute('aria-selected', i === j ? 'true' : 'false')) }
-        document.querySelector('#places').innerHTML = PLACES.map((p, i) => `<article class="place-card"><div class="place-top"><span class="kind">${p.type}</span><h3>${String(i + 1).padStart(2, '0')} ${p.title}</h3><span class="address">${p.address}</span></div><p>${p.blurb}</p><ul>${p.highlights.map(s => `<li>${s}</li>`).join('')}</ul><div class="foot"><a class="action primary" href="${nav(p.id)}" target="_blank" rel="noopener">導航 ↗</a>${p.phone ? `<a class="action" href="tel:+886${p.phone.substring(1).replaceAll('-', '')}">致電 ${p.phone}</a>` : ''}<a class="action" href="${p.site}" target="_blank" rel="noopener">官方資料 ↗</a></div></article>`).join('');
         function copySummary() { const s = DAYS.map(d => `${d.date} ${d.weekday}\n` + d.items.map(it => `${it[0]} ${it[1]}`).join('\n')).join('\n\n'); const t = '苗栗泰安兩天一夜｜11人家庭旅遊\n' + s + '\n\n導覽及用餐尚待確認。'; if (navigator.clipboard && location.protocol !== 'file:') navigator.clipboard.writeText(t).then(() => { document.querySelector('#copy-status').textContent = '行程已複製。' }).catch(() => fallback(t)); else fallback(t) } function fallback(t) { const ta = document.createElement('textarea'); ta.value = t; document.body.append(ta); ta.select(); try { document.execCommand('copy'); document.querySelector('#copy-status').textContent = '行程已複製。' } catch (e) { document.querySelector('#copy-status').textContent = '複製失敗，請直接選取時間表。' } ta.remove() }
     </script>
 </body>
